@@ -1,19 +1,24 @@
 const saveBtn = document.querySelector("#input-btn");
-const inputEl = document.querySelector("#input-el");
 const ulEL = document.querySelector("#ul-el");
+let inputEl = document.querySelector("#input-el");
 let myLeads = [];
 
+
 let getLeads = (input) => {
-    let string =  input.value;
-    myLeads.push(string);
+    myLeads.push(input.value);
 }
 
 let saveLead = () => {
     getLeads(inputEl);
-    for (let i in myLeads) {
-        ulEL.innerHTML += "<li>" + myLeads[i] + "</li>"
-    }
+    ulEL.innerHTML += `<li> 
+        <a target = "_blank" href = "${inputEl.value}">
+            ${inputEl.value} 
+        </a> 
+    </li>`;
+    console.log(ulEL)
+    inputEl.value = "";
 }
+
 
 saveBtn.addEventListener("click", saveLead);
 
